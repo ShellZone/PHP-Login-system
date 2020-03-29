@@ -4,10 +4,27 @@
     box-sizing: border-box;
     
 }
+.logo {
+    width: 75px;
+    height:75px;
+}
 
 .nav-header-main {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    min-height: 8vh;
+    background-color: rgb(53, 160, 179);
     
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    
+}
+
+ul a {
+    padding: 3px;
+    text-decoration: none;
 }

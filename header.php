@@ -14,7 +14,7 @@
 
         <nav class="nav-header-main">
             <a class="header-logo" href= "#">
-            <img src = "img/MyLogo.png" alt="logo">
+            <img class="logo" src = "img/MyLogo.png" alt="logo">
             </a>
 
             <ul>
