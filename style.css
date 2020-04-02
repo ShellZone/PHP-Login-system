@@ -3,7 +3,13 @@
     padding: 0px;
     box-sizing: border-box;
     
+    
 }
+
+body {
+    font-family: 'Do Hyeon', sans-serif; 
+}
+
 .logo {
     width: 75px;
     height:75px;
@@ -14,7 +20,8 @@
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: rgb(53, 160, 179);
+    background-color: rgb(14, 199, 212);
+    
     
 }
 
@@ -22,9 +29,61 @@ ul {
     display: flex;
     list-style-type: none;
     
+    
+}
+
+ul a:hover {
+    color: crimson;
 }
 
 ul a {
     padding: 3px;
     text-decoration: none;
+    
 }
+
+.header-login a:hover {
+    color: crimson;
+}
+
+.login 
+    {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-family: 'Do Hyeon', sans-serif; 
+      }
+
+.logout {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Do Hyeon', sans-serif; 
+  }
+
+  .Signup {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 2px;
+    
+  }
+
+  .Signup:hover,.logout:hover,.login:hover {
+      color:  crimson;
+  }
