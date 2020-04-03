@@ -92,3 +92,15 @@ ul a {
   .Signup:hover,.logout:hover,.login:hover {
       color:  crimson;
   }
+
+main {
+
+    position: absolute;
+    top: 18vh;
+    left: 50%;
+    border: 1px;
+    border-style: groove;
+    padding: 18px;
+    border-radius: 10%;
+    border-color: greenyellow;
+}
