@@ -57,7 +57,8 @@ ul a {
         display: inline-block;
         font-size: 16px;
         font-family: 'Do Hyeon', sans-serif; 
-        margin-top: 4px
+        margin: 2px;
+        
       }
 
 .logout {
@@ -71,8 +72,8 @@ ul a {
     font-size: 16px;
     font-family: 'Do Hyeon', sans-serif; 
     position: relative;
-    left: 369px;
-    top: -33px;
+    margin: 2px;
+ 
     
     margin-bottom: 1px;
   }
@@ -81,11 +82,12 @@ ul a {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 10px 22px;
+    padding: 10px 19px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin: 2px;
     
   }
 
@@ -103,4 +105,8 @@ main {
     padding: 18px;
     border-radius: 10%;
     border-color: greenyellow;
+}
+
+.header-login {
+    display: flex;
 }
