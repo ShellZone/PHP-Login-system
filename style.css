@@ -15,6 +15,8 @@ body {
     height:75px;
 }
 
+/* Nav Stuff  */
+
 .nav-header-main {
     display: flex;
     justify-content: space-around;
@@ -23,6 +25,12 @@ body {
     background-color: rgb(14, 199, 212);
     
     
+}
+
+.header-login input[type=text], .header-login input[type=password]{
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }
 
 ul {
@@ -48,6 +56,7 @@ ul a {
 
 .login 
     {
+        box-sizing: border-box;
         background-color: #4CAF50; /* Green */
         border: none;
         color: white;
@@ -62,6 +71,7 @@ ul a {
       }
 
 .logout {
+    box-sizing: border-box;
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -71,7 +81,6 @@ ul a {
     display: inline-block;
     font-size: 16px;
     font-family: 'Do Hyeon', sans-serif; 
-    position: relative;
     margin: 2px;
  
     
@@ -79,20 +88,24 @@ ul a {
   }
 
   .Signup {
+    box-sizing: border-box;
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 10px 19px;
+    padding: 10px 22px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-family: 'Do Hyeon', sans-serif; 
     margin: 2px;
     
   }
 
   .Signup:hover,.logout:hover,.login:hover {
       color:  crimson;
+      cursor: pointer;
+      
   }
 
 main {
@@ -101,12 +114,52 @@ main {
     top: 18vh;
     left: 50%;
     border: 1px;
-    border-style: groove;
     padding: 18px;
-    border-radius: 10%;
-    border-color: greenyellow;
+
 }
 
 .header-login {
     display: flex;
+}
+
+
+
+/* Signup Page Styling */
+
+.wrapper-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+
+.wrapper-main input[type=password]{
+    
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.wrapper-main input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.wrapper-main .submit {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Do Hyeon', sans-serif; 
+}
+
+.wrapper-main .submit:hover {
+    color:  crimson;
+    cursor: pointer;
 }
