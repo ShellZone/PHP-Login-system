@@ -14,7 +14,7 @@
     <header>
 
         <nav class="nav-header-main">
-            <a class="header-logo" href= "#">
+            <a class="header-logo" href= "index.php">
             <img class="logo" src = "img/MyLogo.png" alt="logo">
             </a>
 
