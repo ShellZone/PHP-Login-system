@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['signup-submit'])){
+if (isset($_POST['signup-submit'])) {
 
    require 'dbh.inc.php';
     
@@ -10,10 +10,9 @@ if(isset($_POST['signup-submit'])){
    $password = $_POST['pwd'];
    $passwordRepeat = $_POST['pwd-repeat'];
 
-    if(empty($username)|| empty($password)|| empty($email)|| empty($passwordRepeat)){
+    if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
         header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
-    }
-
-
+        exit();
+        }
 
 }
