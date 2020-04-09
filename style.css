@@ -8,6 +8,7 @@
 
 body {
     font-family: 'Do Hyeon', sans-serif; 
+    
 }
 
 .logo {
@@ -26,6 +27,7 @@ body {
     
     
 }
+
 
 .header-login input[type=text], .header-login input[type=password]{
     padding: 10px 10px;
@@ -67,7 +69,10 @@ ul a {
         font-size: 16px;
         font-family: 'Do Hyeon', sans-serif; 
         margin: 2px;
-        
+        height: 41px;
+        width: 100px;
+        position: relative;
+        top: -4px;
       }
 
 .logout {
@@ -82,9 +87,10 @@ ul a {
     font-size: 16px;
     font-family: 'Do Hyeon', sans-serif; 
     margin: 2px;
- 
-    
+    width: 100px;
+    height: 41px;
     margin-bottom: 1px;
+    position: relative;
   }
 
   .Signup {
@@ -98,7 +104,9 @@ ul a {
     font-size: 16px;
     font-family: 'Do Hyeon', sans-serif; 
     margin: 2px;
-    
+    height: 41px;
+    width: 100px;
+    position: relative;
   }
 
   .Signup:hover,.logout:hover,.login:hover {
