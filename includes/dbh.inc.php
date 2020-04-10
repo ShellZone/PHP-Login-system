@@ -1,7 +1,7 @@
 <?php
 
 
-$servername = "locahost:81";
+$servername = "127.0.0.1";
 $dBUsername = "root";
 $dBPassword = "";
 $dBName = "phploginsystem";
