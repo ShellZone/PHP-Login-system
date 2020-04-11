@@ -1,5 +1,5 @@
 <?php
-
+// checks if user got here via clicking signup button on form
 if (isset($_POST['signup-submit'])) {
 
    require 'dbh.inc.php';
@@ -11,6 +11,8 @@ if (isset($_POST['signup-submit'])) {
    $passwordRepeat = $_POST['pwd-repeat'];
 
    // Checks Empty Fields
+   // Sends back to signup page
+
     if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
         header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
         exit();
@@ -33,8 +35,9 @@ if (isset($_POST['signup-submit'])) {
             exit();
         }
         else {
-        //   
+          
             $sql = "SELECT uidusers FROM users WHERE uidUsers=?";
+            // creates a prepared statement
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)){
                 header("Location: ../signup.php?error=sqlerror");
@@ -43,13 +46,37 @@ if (isset($_POST['signup-submit'])) {
             else {
                mysqli_stmt_bind_param($stmt, "s", $username); 
                mysqli_stmt_execute($stmt);
+               // BELOW fetch ifo from DB
                mysqli_stmt_store_result($stmt);
                $resultCheck = mysqli_stmt_num_rows($stmt);
                if($resultCheck > 0){
                 header("Location: ../signup.php?error=usertaken&mail=".$email);
                 exit();
                }
+               else {
+                   // Insert into DB with placeholders 
+                $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?, ?, ?)";
+                $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt, $sql)){
+                    header("Location: ../signup.php?error=sqlerror");
+                    exit();
+                }  else {
+                    // hashing password for added security
+                       $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+
+
+                    mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd); 
+                    mysqli_stmt_execute($stmt);
+                    header("Location: ../signup.php?signup=success");
+                    exit();
+                }
+            
+            }
             }
 
         }
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+} else {
+    header("Location: ../signup.php");
 }
