@@ -56,6 +56,7 @@ if (isset($_POST['signup-submit'])) {
                else {
                    // Insert into DB with placeholders 
                 $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?, ?, ?)";
+                //initialize connection
                 $stmt = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($stmt, $sql)){
                     header("Location: ../signup.php?error=sqlerror");
@@ -79,4 +80,5 @@ if (isset($_POST['signup-submit'])) {
         mysqli_close($conn);
 } else {
     header("Location: ../signup.php");
+    exit();
 }
