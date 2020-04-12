@@ -3,27 +3,24 @@
 if (isset($_POST['login-submit'])) {
 
   // We include the connection script so we can use it later.
-  // We don't have to close the MySQLi connection since it is done automatically, but it is a good habit to do so anyways since this will immediately return resources to PHP and MySQL, which can improve performance.
+
   require 'dbh.inc.php';
 
-  // We grab all the data which we passed from the signup form so we can use it later.
+  // We grab all the data which we passed from the signup form 
   $mailuid = $_POST['mailuid'];
   $password = $_POST['pwd'];
 
-  // Then we perform a bit of error handling to make sure we catch any errors made by the user. Here you can add ANY error checks you might think of! I'm just checking for a few common errors in this tutorial so feel free to add more. If we do run into an error we need to stop the rest of the script from running, and take the user back to the login form with an error message.
+  // Then we perform a bit of error handling to make sure we catch any errors made by the user. 
 
-  // We check for any empty inputs. (PS: This is where most people get errors because of typos! Check that your code is identical to mine. Including missing parenthesis!)
   if (empty($mailuid) || empty($password)) {
     header("Location: ../index.php?error=emptyfields&mailuid=".$mailuid);
     exit();
   }
   else {
 
-    // If we got to this point, it means the user didn't make an error! :)
+    //get the password from the user in the database  and then we need to de-hash it and check if it matches the password the user typed into the login form.
 
-    // Next we need to get the password from the user in the database that has the same username as what the user typed in, and then we need to de-hash it and check if it matches the password the user typed into the login form.
-
-    // We will connect to the database using prepared statements which work by us sending SQL to the database first, and then later we fill in the placeholders by sending the users data.
+    // We will connect to the database using prepared statements 
     $sql = "SELECT * FROM users WHERE uidUsers=? OR emailUsers=?;";
     // Here we initialize a new statement using the connection from the dbh.inc.php file.
     $stmt = mysqli_stmt_init($conn);
@@ -56,16 +53,14 @@ if (isset($_POST['login-submit'])) {
         // Then if they DO match, then we know it is the correct user that is trying to log in!
         else if ($pwdCheck == true) {
 
-          // Next we need to create session variables based on the users information from the database. If these session variables exist, then the website will know that the user is logged in.
+          // Next we need to create session variables based on the users information from the database. 
 
-          // Now that we have the database data, we need to store them in session variables which are a type of variables that we can use on all pages that has a session running in it.
-          // This means we NEED to start a session HERE to be able to create the variables!
           session_start();
           // And NOW we create the session variables.
           $_SESSION['id'] = $row['idUsers'];
           $_SESSION['uid'] = $row['uidUsers'];
           $_SESSION['email'] = $row['emailUsers'];
-          // Now the user is registered as logged in and we can now take them back to the front page! :)
+          // Now the user is registered 
           header("Location: ../index.php?login=success");
           exit();
         }

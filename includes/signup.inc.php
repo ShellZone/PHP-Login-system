@@ -12,9 +12,9 @@ if (isset($_POST['signup-submit'])) {
   $password = $_POST['pwd'];
   $passwordRepeat = $_POST['pwd-repeat'];
 
-  // Then we perform a bit of error handling to make sure we catch any errors made by the user. Here you can add ANY error checks you might think of! I'm just checking for a few common errors in this tutorial so feel free to add more. If we do run into an error we need to stop the rest of the script from running, and take the user back to the signup page with an error message. As an additional feature we will also send all the data back to the signup page, to make sure all the fields aren't empty and the user won't need to type it all in again.
+  // Then we perform a bit of error handling to make sure we catch any errors made by the user. 
 
-  // We check for any empty inputs. (PS: This is where most people get errors because of typos! Check that your code is identical to mine. Including missing parenthesis!)
+  // We check for any empty inputs. 
   if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
     header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
     exit();
@@ -41,7 +41,7 @@ if (isset($_POST['signup-submit'])) {
   }
   else {
 
-    // We also need to include another error handler here that checks whether or the username is already taken. We HAVE to do this using prepared statements because it is safer!
+    // We also need to include another error handler here that checks whether or the username is already taken. 
 
     // First we create the statement that searches our database table to check for any identical usernames.
     $sql = "SELECT uidUsers FROM users WHERE uidUsers=?;";
@@ -55,7 +55,6 @@ if (isset($_POST['signup-submit'])) {
     }
     else {
       // Next we need to bind the type of parameters we expect to pass into the statement, and bind the data from the user.
-      // In case you need to know, "s" means "string", "i" means "integer", "b" means "blob", "d" means "double".
       mysqli_stmt_bind_param($stmt, "s", $username);
       // Then we execute the prepared statement and send it to the database!
       mysqli_stmt_execute($stmt);
@@ -71,11 +70,9 @@ if (isset($_POST['signup-submit'])) {
         exit();
       }
       else {
-        // If we got to this point, it means the user didn't make an error! :)
 
-        // Next thing we do is to prepare the SQL statement that will insert the users info into the database. We HAVE to do this using prepared statements to make this process more secure. DON'T JUST SEND THE RAW DATA FROM THE USER DIRECTLY INTO THE DATABASE!
+        // Next thing we do is to prepare the SQL statement that will insert the users info into the database.
 
-        // Prepared statements works by us sending SQL to the database first, and then later we fill in the placeholders (this is a placeholder -> ?) by sending the users data.
         $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?, ?, ?);";
         // Here we initialize a new statement using the connection from the dbh.inc.php file.
         $stmt = mysqli_stmt_init($conn);
@@ -89,16 +86,16 @@ if (isset($_POST['signup-submit'])) {
 
           // If there is no error then we continue the script!
 
-          // Before we send ANYTHING to the database we HAVE to hash the users password to make it un-readable in case anyone gets access to our database without permission!
-          // The hashing method I am going to show here, is the LATEST version and will always will be since it updates automatically. DON'T use md5 or sha256 to hash, these are old and outdated!
+         //Hashing pwd
+
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-          // Next we need to bind the type of parameters we expect to pass into the statement, and bind the data from the user.
+          // bind the type of parameters we expect to pass into the statement, and bind the data from the user.
           mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
           // Then we execute the prepared statement and send it to the database!
-          // This means the user is now registered! :)
+          
           mysqli_stmt_execute($stmt);
-          // Lastly we send the user back to the signup page with a success message!
+          
           header("Location: ../signup.php?signup=success");
           exit();
 
@@ -111,7 +108,7 @@ if (isset($_POST['signup-submit'])) {
   mysqli_close($conn);
 }
 else {
-  // If the user tries to access this page an inproper way, we send them back to the signup page.
+    
   header("Location: ../signup.php");
   exit();
 }
