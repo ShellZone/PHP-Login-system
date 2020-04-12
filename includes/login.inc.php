@@ -25,11 +25,11 @@ if(empty($mailuid) || empty($password)){
         exit();
     }
     else {
-        mysqli_stmt_bind_param($stmt, "ss", $mailuid, $password);
+        mysqli_stmt_bind_param($stmt, "ss", $mailuid, $mailuid);
         mysqli_stmt_execute($stmt);
         //result is equal to DB result and if its empty
         $result = mysqli_stmt_get_result($stmt);
-        if($row = mysqli_fetch_assoc()){
+        if($row = mysqli_fetch_assoc($result)){
             // Hashes then checks the password
             $pwdCheck = password_verify($password, $row['pwdUsers']);
             if($pwdCheck == false){
@@ -40,6 +40,11 @@ if(empty($mailuid) || empty($password)){
 
                 session_start();
                 $_SESSION['userId'] = $row['idUsers'];
+                $_SESSION['userUid'] = $row['uidUsers'];
+
+                header("Location: ../index.php?login=sucess");
+                exit();
+
                 
             }else{
                 header("Location: ../index.php?error=wrongpwd");
