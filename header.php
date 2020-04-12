@@ -34,18 +34,30 @@ session_start();
 
 
         <div class="header-login">
-            <form action="includes/login.inc.php" method="post">
-            <input type="text" name="mailuid" placeholder="UserName/E-mail..." >
-            <input type="password" name="pwd" placeholder="Password..." >
-            <button class="login" type="submit" name="login-submit">Login</button>
-            </form>
-            <a class="Signup" href="signup.php">Signup</a>
+        <?php
 
 
-            <form action="includes/logout.inc.php" method="post">
-             <button class="logout" type="submit" name="logout-submit">Logout</button>
+            if(isset($_SESSION['userId'])){
+                echo '<form action="includes/logout.inc.php" method="post">
+                <button class="logout" type="submit" name="logout-submit">Logout</button>
+               
+               </form>';
+            } else {
+                
+                echo '<form action="includes/login.inc.php" method="post">
+                <input type="text" name="mailuid" placeholder="UserName/E-mail..." >
+                <input type="password" name="pwd" placeholder="Password..." >
+                <button class="login" type="submit" name="login-submit">Login</button>
+                </form>
+                <a class="Signup" href="signup.php">Signup</a>';
+
+            }
+
+        ?>
             
-            </form>
+
+
+            
         </div>
         </nav>
         
