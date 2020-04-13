@@ -1,5 +1,5 @@
 <?php
-
+//Connecting to DB
 
 $servername = "127.0.0.1";
 $dBUsername = "root";
