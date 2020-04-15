@@ -61,11 +61,6 @@ require "header.php";
             <button type="submit" name="signup-submit">Signup</button>
           </form>
 
-
-          <!-- Form to start Password recovery Process -->
-
-          <a href='reset-password.php'>Forgot Your Password</p></a>
-
         </section>
       </div>
     </main>
